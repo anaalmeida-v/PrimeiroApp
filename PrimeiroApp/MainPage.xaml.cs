@@ -44,5 +44,24 @@ public partial class MainPage : ContentPage
 
 		await Application.Current.MainPage.DisplayAlert("Mensagem", $"Você já viveu {diasVividos} dias", "Ok");
     }
+
+    private void btnAtualizarInformacoes_Clicked(object sender, EventArgs e)
+    {
+        string informacoes = string.Empty;
+
+        if (Preferences.ContainsKey("AcaoInicial"))
+            informacoes += Preferences.Get("AcaoInicial", string.Empty);//string.empty --> valor default.
+
+        if (Preferences.ContainsKey("AcaoStart"))
+            informacoes += Preferences.Get("AcaoStart", string.Empty);
+
+        if (Preferences.ContainsKey("AcaoSleep"))
+            informacoes += Preferences.Get("AcaoSleep", string.Empty);
+
+        if (Preferences.ContainsKey("AcaoResume"))
+            informacoes += Preferences.Get("AcaoResume", string.Empty);
+
+        lblInformacoes.Text = informacoes;
+    }
 }
 
